@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div id="app">
+  <p>This some text on a page.</p>
+  <button>Toggle Text</button>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('button').click(function (event) {
+      $('p').toggle();
+    });
+  });
+</script>
