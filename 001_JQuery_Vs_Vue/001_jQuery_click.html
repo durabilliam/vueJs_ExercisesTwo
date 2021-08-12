@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div id="app">
+  <p>Hello</p>
+  <p>Hello Dude</p>
+  <p>Hello Dude, What's UP!!</p>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#app p').click(function (event) {
+      console.log($(this).html());
+    });
+  });
+</script>
