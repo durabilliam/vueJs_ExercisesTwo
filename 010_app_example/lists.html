@@ -5,23 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Twitter Friends</title>
+  <title>Up and Running with VueJS Final Project</title>
   <!-- development version, includes helpful console warnings -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    li {
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
 
   <div id="app">
     <h2>All Friends</h2>
+    <!-- <li v-for='friend in friends' :key='friend.username' @click="friend.username = !friend.username"> -->
     <ul>
-      <li v-for='friend in friends' :key='friend.username'>
+      <li v-for="(friend,index) in friends" v-bind:key="friend.username" @click="selectFriend(friend,index)">
         {{ friend.name}} | {{ friend.username}}
       </li>
     </ul>
     <h2>Selected Friends</h2>
-    <ul>
-      <li v-for='friend in friends' :key='friend.username' @click="friend.username = !friend.username">
+    <ul v-show="selectedFriends.length > 0">
+      <li v-for="friend in selectedFriends" v-bind:key="friend.username">
         {{ friend.name}} | {{ friend.username}}
       </li>
     </ul>
@@ -43,7 +49,16 @@
             { name: 'Damian Dulisz', username: 'DamianDulisz' },
             { name: 'Ben Hong', username: 'bencodezen' },
             { name: 'Divya Sasidharan', username: 'shortdiv' }
-          ]
+          ],
+          selectedFriends: []
+        }
+      },
+      methods: {
+        selectFriend(friend, index) {
+          //remove from original friends
+          this.friends.splice(index, 1);
+          //add to selectedFriends
+          this.selectedFriends.push(friend);
         }
       }
     });
@@ -51,3 +66,4 @@
 </body>
 
 </html>
+<!-- <li v-for='friend in friends' :key='friend.username' @click="friend.username = !friend.username"> -->
